@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?rpft5i');
-  src:  url('fonts/icomoon.eot?rpft5i#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?rpft5i') format('truetype'),
-    url('fonts/icomoon.woff?rpft5i') format('woff'),
-    url('fonts/icomoon.svg?rpft5i#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ixm2ma');
+  src:  url('fonts/icomoon.eot?ixm2ma#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ixm2ma') format('truetype'),
+    url('fonts/icomoon.woff?ixm2ma') format('woff'),
+    url('fonts/icomoon.svg?ixm2ma#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -52,6 +52,9 @@
 .icon-mic:before {
   content: "\e91e";
 }
+.icon-file-text2:before {
+  content: "\e926";
+}
 .icon-folder-open:before {
   content: "\e930";
 }
@@ -90,6 +93,9 @@
 }
 .icon-fire:before {
   content: "\e9a9";
+}
+.icon-switch:before {
+  content: "\e9b6";
 }
 .icon-upload2:before {
   content: "\e9c6";
@@ -159,6 +165,12 @@
 }
 .icon-checkmark:before {
   content: "\ea10";
+}
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+.icon-checkbox-unchecked:before {
+  content: "\ea53";
 }
 .icon-add-outline:before {
   content: "\e906";
