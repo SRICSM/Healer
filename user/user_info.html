@@ -16,13 +16,15 @@
     <div class="layui-card-header">修改用户信息</div>
     <div class="layui-card-body">
       <form class="layui-form"  lay-filter="formUserInfo">
-        <!-- 隐藏域 -->
+
+        <!-- 隐藏域 不可见，可以当普通输入框使用-->
         <input type="hidden" name="id">
+
         <div class="layui-form-item">
           <label class="layui-form-label">登录名称</label>
           <div class="layui-input-block">
             <input readonly type="text" name="username" required lay-verify="required" placeholder="请输入登录名称"
-              autocomplete="off" class="layui-input">
+              autocomplete="off" class="layui-input" readonly>
           </div>
         </div>
         <div class="layui-form-item">

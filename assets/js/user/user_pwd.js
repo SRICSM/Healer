@@ -15,9 +15,7 @@ $(function() {
     }
   })
 
-  /**
-   * 更新密码的操作
-   */
+  //更新密码的操作
   $('.layui-form').on('submit', function(e) {
     e.preventDefault()
     $.ajax({
@@ -29,7 +27,7 @@ $(function() {
           return layui.layer.msg('更新密码失败！')
         }
         layui.layer.msg('更新密码成功！')
-        // 重置表单
+        // 重置表单 将jquery元素转换为原生的dom元素，再调用reset()方法
         $('.layui-form')[0].reset()
       }
     })
