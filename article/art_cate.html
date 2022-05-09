@@ -20,6 +20,7 @@
   </div>
   <div class="layui-card-body">
     <table class="layui-table">
+      <!-- colgroup定义表格的宽度 <col />自适应-->
       <colgroup>
         <col />
         <col />
@@ -38,7 +39,8 @@
 </div>
 
 <!-- 表格数据的模板 -->
-<script type="text/html" id="tpl-table">
+<script type="text/html" id="tpl-table">  
+  <!--each 循环开始 -->
   {{each data}}
   <tr>
     <td>{{$value.name}}</td>
@@ -51,9 +53,11 @@
   {{/each}}
 </script>
 
-<!-- 添加文章分类的弹出层 -->
+<!-- 添加文章分类的弹出层 动态渲染 -->
 <script type="text/html" id="dialog-add">
+  
   <form class="layui-form" id="form-add">
+
     <div class="layui-form-item">
       <label class="layui-form-label">分类名称</label>
       <div class="layui-input-block">
@@ -80,7 +84,10 @@
 <!-- 修改文章分类的弹出层 -->
 <script type="text/html" id="dialog-edit">
   <form class="layui-form" id="form-edit" lay-filter="form-edit">
+    
+    <!-- 隐藏域，保存Id的值 -->
     <input type="hidden" name="Id">
+
     <div class="layui-form-item">
       <label class="layui-form-label">分类名称</label>
       <div class="layui-input-block">

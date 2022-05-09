@@ -50,8 +50,7 @@ $(function () {
                 $('#link_login').click()
             }
         })
-        console.log(111)
->>>>>>> Stashed changes
+        // console.log(111)
     })
   })
 
