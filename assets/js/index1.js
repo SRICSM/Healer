@@ -1,4 +1,5 @@
 $(function () {
+
     getUserInfo()
 
     var layer = layui.layer
@@ -16,12 +17,12 @@ $(function () {
     })
 })
 
-//!!!!后台登录有问题  不能获取用户的基本信息
+// 获取用户的基本信息
 function getUserInfo() {
     $.ajax({
         method: 'GET',
-        url: '/my/uesrinfo',
-        //请求头 身份认证字段
+        url: '/my/userinfo',
+        // 请求头 身份认证字段
         // headers: {
         //     Authorization: localStorage.getItem('token') || ''
         // },
@@ -33,18 +34,18 @@ function getUserInfo() {
             //调用renderAvatar 渲染用户的头像
             renderAvatar(res.data)
         },
-        //不论成功或失败，最终都会调用complete回调函数 利用次函数实现有权限的访问
-        // complete: function (res) {
-        //     console.log(res)
-        //     //在complete回调函数中，可以使用res.responseJSON拿到服务器响应回来的数据
-        //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！')
-        //     {
-        //         //1.强制清空 token
-        //         localStorage.removeItem('token')
-        //         //2.强制跳转登录页面
-        //         location.href = '/login.html'
-        //     }
-        // }
+        // 不论成功或失败，最终都会调用complete回调函数 利用次函数实现有权限的访问
+        complete: function (res) {
+            console.log(res)
+            //在complete回调函数中，可以使用res.responseJSON拿到服务器响应回来的数据
+            if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！')
+            {
+                //1.强制清空 token
+                localStorage.removeItem('token')
+                //2.强制跳转登录页面
+                location.href = '/login.html'
+            }
+        }
     })
 }
 
@@ -52,10 +53,11 @@ function getUserInfo() {
 function renderAvatar(user) {
     //1.获取用户名称
     var name = user.nickname || user.username
+    console.log(name)
     //2.设置欢迎文本
     $('#welcome').html('欢迎&nbsp;&nbsp' + name)
     //3.按需渲染用户信息
-    if (user.user_pic != null) {
+    if (user.user_pic !== null) {
         //3.1 渲染图片头像
         $('.layui-nav-img').attr('src', user.user_pic).show()
         $('.text_avatar').hide()
@@ -64,6 +66,6 @@ function renderAvatar(user) {
         $('.layui-nav-img').hide();
         //文本头像的文本内容去用户名首位字符 字符串可以当数组使用
         var first = name[0].toUpperCase()
-        $('.text_avatar').html(first).show()
+        $('.text_avatar').html(first).show(0)
     }
 }

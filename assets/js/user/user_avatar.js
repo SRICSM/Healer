@@ -1,5 +1,6 @@
 $(function () {
 
+  // initUserInfo()
   var layer = layui.layer
 
   // 1.1 获取裁剪区域的 DOM 元素
@@ -67,14 +68,35 @@ $(function () {
         avatar: dataURL
       },
       success: function (res) {
-        // console.log(res)
+        console.log(res)
         if (res.status !== 0) {
           return layer.msg('更换头像失败！')
         }
         layer.msg('更换头像成功！')
         //调用父窗口获取用户信息函数，更新父页面内容
         window.parent.getUserInfo()
+        // var my = $('#image')
+        var my = document.querySelector('#image')
+        my.setAttribute('src',res.avatar)
+        console.log(my)
       }
     })
   })
 })
+
+
+// 获取用户信息 设置初始裁剪区域示例图片为我的头像
+// function initUserInfo() {
+//   $.ajax({
+//     method: 'GET',
+//     url: '/my/userinfo',
+//     success: function (res) {
+//       if (res.status !== 0) {
+//         return layer.msg('获取用户信息失败！')
+//       }
+//       var my = document.querySelector('#image')
+//       my.setAttribute('src', res.data.user_pic)
+//       console.log(my)
+//     }
+//   })
+// }

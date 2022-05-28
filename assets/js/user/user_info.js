@@ -1,8 +1,9 @@
+var form = layui.form
+var layer = layui.layer
+// var userinfo
 $(function () {
-  var form = layui.form
-  var layer = layui.layer
   form.verify({
-    nickname: function () {
+    nickname: function (value) {
       if (value.length > 6) {
         return '昵称长度必须在 1 - 6个之间'
       }
@@ -10,7 +11,9 @@ $(function () {
   })
 })
 
+
 initUserInfo()
+// 获取用户信息
 function initUserInfo() {
   $.ajax({
     method: 'GET',
@@ -20,8 +23,10 @@ function initUserInfo() {
         return layer.msg('获取用户信息失败！')
       }
       console.log(res)
+      // userinfo = res
       //调用form.val() 快速为表单赋值
-      form.val('formUserInfo',res.data)
+      form.val('formUserInfo', res.data)
+      return res
     }
   })
 }
@@ -37,12 +42,14 @@ $('#btnReset').on('click', function (e) {
 $('.layui-form').on('submit', function (e) {
   //阻止表单默认提交行为
   e.preventDefault()
+
   //发起ajax数据请求
   $.ajax({
     method: 'POST',
     url: '/my/userinfo',
-    data: $(this).serialize(),
+    data: $(this).serialize(),  //该函数会提交所有信息，和后台不匹配，可能导致错误
     success: function (res) {
+      console.log(res)
       if (res.status !== 0) {
         return layer.msg('更新用户信息失败！')
       }
